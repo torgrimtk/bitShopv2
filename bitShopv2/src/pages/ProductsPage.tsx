@@ -3,8 +3,12 @@ import Products from "../components/Products"
 const ProductsPage = () => {
     return (
         <>
-            <h1>Hello! This is the ProductsPage</h1>
-            <Products />
+            <div className="container mx-auto px-4 py-8">
+                <h2 className="text-3x1 font-bold mb-6"> bitShop Products </h2>
+                <div className="flex flex-col">
+                    <Products />
+                </div>
+            </div>
         </>
     )
 }

@@ -10,6 +10,7 @@ const Products = () => {
 
     const [products, setProducts] = useState<TProduct[]>([])
     const [categories, setCategories] = useState<TCategory[]>([])
+    const [selectedCategory, setSelectedCategory] = useState<string>('')
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -36,7 +37,11 @@ const Products = () => {
         fetchProducts()
     }, []);
 
-    // THIS IS WHERE YOU LEFT OF :D LES MER PÅ const uniqueCategories koden du skrev, se hva claude skrev
+    const handleCategoryChange = (category: string) => {
+        setSelectedCategory(category)
+    }
+
+    // THIS IS WHERE YOU LEFT OF :D 
 
     return (
         <>
