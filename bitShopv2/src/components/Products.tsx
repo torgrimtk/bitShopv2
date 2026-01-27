@@ -11,6 +11,7 @@ const Products = () => {
     const [products, setProducts] = useState<TProduct[]>([])
     const [categories, setCategories] = useState<TCategory[]>([])
     const [selectedCategory, setSelectedCategory] = useState<string>('')
+    const [searchQuery, setSearchQuery] = useState<string>('')
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -37,11 +38,37 @@ const Products = () => {
         fetchProducts()
     }, []);
 
+    // Choose the category
     const handleCategoryChange = (category: string) => {
         setSelectedCategory(category)
     }
 
-    // THIS IS WHERE YOU LEFT OF :D 
+    //Search handler. Changes based on what the user searches for
+    const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value)
+    }
+
+    const filteredProducts = products.filter(product => {
+
+        // if the category and product do not both exist inside of selectedCategory, return false
+        if (selectedCategory && product.category !== selectedCategory) {
+            return false
+        }
+        // if there is a searchQuery, and is it in the title or description? if NOT (!), then return false
+        if (
+            searchQuery && 
+            !(
+                product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                product.description.toLowerCase().includes(searchQuery.toLowerCase())
+            )
+        ) {
+            return false
+        }
+        // if none of the conditions are met, then the function returns true
+        return true
+    })
+
+    // DU ER HER :D 
 
     return (
         <>
