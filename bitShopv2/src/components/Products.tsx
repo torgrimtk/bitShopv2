@@ -68,7 +68,8 @@ const Products = () => {
         return true
     })
 
-    // DU ER HER :D 
+    // DU ER HER :D next: Se mer på hvilke funksjoner som er lagd
+    // Så ta å skriv jsx kode. Hva er det du har på plass til nå?
 
     return (
         <>
