@@ -4,9 +4,10 @@
 import { useEffect, useState } from "react"
 import { type TCategory, type TProduct } from "../models/ItemModel" //This lets us use the data models in the react hook under the Products function
 import axios from 'axios'
+import ProductItem from "./ProductItem"
 
 
-const Products = () => {
+const ProductsList = () => {
 
     const [products, setProducts] = useState<TProduct[]>([])
     const [categories, setCategories] = useState<TCategory[]>([])
@@ -56,7 +57,7 @@ const Products = () => {
         }
         // if there is a searchQuery, and is it in the title or description? if NOT (!), then return false
         if (
-            searchQuery && 
+            searchQuery &&
             !(
                 product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 product.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -71,21 +72,21 @@ const Products = () => {
     return (
         <div>
             <div className='flex flex-col-reverse gap-2 md:flex-row'>
-                <input 
+                <input
                     type='text'
                     placeholder='Search by title or description'
                     value={searchQuery}
                     onChange={handleSearchInputChange}
                     className='p-2 border-2 border-gray-300 rounded-md w-full'
                 />
-                <select 
+                <select
                     value={selectedCategory}
                     onChange={e => handleCategoryChange(e.target.value)}
                     className='p-2 border-2 h-11 border-gray-300 rounded-md'
                 >
                     <option value=''>All categories</option>
                     {categories.map(category => (
-                        <option 
+                        <option
                             key={category.name}
                             value={category.name}
                         >
@@ -94,19 +95,25 @@ const Products = () => {
                     ))}
                 </select>
             </div>
-
-
-
-            
-            {/* DU STOPPET HER SIST. DU MÅ FJERNE DIV OG P CLASSNAME UNDER HER FØR DU FORTSETTER */}
             {filteredProducts.length > 0 ? (
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4'>
-        </div>
-      ) : (
-        <p className='mt-4 text-center'>No products available or found.</p>
-      )}
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4'>
+                    {filteredProducts.map(product => (
+                        <ProductItem
+                            key={product.id}
+                            id={product.id}
+                            title={product.title}
+                            price={product.price}
+                            description={product.description}
+                            image={product.image}
+
+                        />
+                    ))}
+                </div>
+            ) : (
+                <p className='mt-4 text-center'>No products available or found.</p>
+            )}
         </div>
     )
 }
 
-export default Products
+export default ProductsList

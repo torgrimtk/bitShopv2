@@ -27,9 +27,15 @@ const ProductItem: React.FC<TProductItemProps> = ({
                     className='w-full h-full object-contain'
                 />
             </div>
-         {/* DU ER HER. Les på claude sin "The Image Container" neste gang du skal progge! 
-         Du klarer dette. Fokuser!! Ta å lag et flowchart også kanskje? Evt tegn det selv. */}
-
+            <h4 className='text-sm my-2 font-semibold line-clamp-2 md:text-lg'>
+                {title}
+            </h4>
+            <p className='text-cs text-gray-500 mb-4 overflow-hidden line-clamp-2 md:text-sm'>
+                {description}
+            </p>
+            <div className='flex justify-between items-center mt-auto'>
+                <p className='text-sm md:text-lg'>${price.toFixed(2)}</p>
+            </div>
         </Link>
     )
 }
