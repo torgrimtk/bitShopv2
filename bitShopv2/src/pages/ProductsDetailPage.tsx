@@ -4,8 +4,6 @@
 
 const ProductsDetailPage = () => {
 
-    // THIS IS THE NEXT BIT OF CODE  THAT YOU NEED TO WRITE!!!!! :DDD
-
     return (
         <>
             <h1>Hello! This is the ProductsDetailPage</h1>
