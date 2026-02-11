@@ -7,7 +7,6 @@ export type TProductDetailProps = {
     title: string
     price: number
     description: string
-    category: string
     image: string
     rating: {
         rate: number
@@ -29,7 +28,6 @@ const ProductDetail: React.FC<TProductDetailProps> = ({
     title,
     price,
     description,
-    category,
     image,
     rating,
 }) => {

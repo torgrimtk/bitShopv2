@@ -1,19 +1,50 @@
 
 // When you click on an item on the page, the details of the product will appear here
 
+import { useParams } from "react-router-dom"
+import type { TProductDetailProps } from "../components/ProductDetail"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import ProductDetail from "../components/ProductDetail"
+
 
 const ProductsDetailPage = () => {
 
-    return (
-        <>
-            <h1>Hello! This is the ProductsDetailPage</h1>
-        </>
-    )
+    //grabs the id from the url, so if it sees ex: "5", then it grabs id 5
+    const { id } = useParams()
+    const [product, setProduct] = useState<TProductDetailProps | null>(null)
 
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(
+                    `https://fakestoreapi.com/products/${id}`
+                )
+                setProduct(response.data)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        fetchProduct()
+    }, [])
+
+    return (
+        <div className='w-4/5 mx-auto'>
+            {product ? (
+                <ProductDetail
+                    id={product.id}
+                    title={product.title}
+                    price={product.price}
+                    description={product.description}
+                    image={product.image}
+                    rating={product.rating}
+                />
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
+    )
 }
 
-//DU ER HER. DU MÅ SKRIVE ALL KODE SOM SKAL I DENNE FILEN NEXT!
-//Les på det siste du linket til Claude
-//test deg selv: Hva er useEffect for? Svar: las på det siste chatgpt skrev om det til deg
 
 export default ProductsDetailPage
