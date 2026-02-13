@@ -4,3 +4,4 @@ What you need to install:
 - npm install
 - npm install tailwindcss @tailwindcss/vite
 - npm install axios
+- npm install lucide-react

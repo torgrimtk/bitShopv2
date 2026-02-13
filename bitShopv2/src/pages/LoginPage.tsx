@@ -3,10 +3,10 @@
 
 const LoginPage = () => {
     return (
-        <>
-            <h1>Welcome to the Login Page</h1>
-        </>
+        <div className='mx-auto w-4/5 mb-8'>
+            <h2>Welcome to the loginPage</h2>
+        </div>
     )
 }
 
-export default LoginPage()
+export default LoginPage
