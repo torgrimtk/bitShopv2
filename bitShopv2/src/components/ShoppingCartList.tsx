@@ -47,6 +47,7 @@ const ShoppingCartList: React.FC<TShoppingCartListProps> = ({
 
     }
 
+    // Next function: INCERMENT. Skriv den uten hjelp! Den er nesten lik som decrement:)
     // DU STOPPET HER :) Les videre på det Claude skrev og kod i vei!
 
 }
